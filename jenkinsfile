@@ -1,0 +1,14 @@
+node {
+    stage('vcs') {
+       git 'https://github.com/venkatareddychalla/game-of-life.git'
+    }
+    
+    script('build & package'){
+          sh 'package'
+    }
+    
+    stage('results') {
+        archiveArtifacts 'gameoflife-web/target/gameoflife.war'
+    }
+
+  }
